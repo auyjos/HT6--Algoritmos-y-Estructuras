@@ -12,6 +12,14 @@ public class Deck {
     private List<String> userDeck;
 
     /**
+     * Constructor que inicializa el deck con la base de datos
+     * @param database
+     */
+    public Deck (Map<String,List<String>> database) {
+        this.database = database;
+    }
+
+    /**
      * Agrega una carta a la coleccion del usuario
      * @param cardname
      * @return true si la carta solicitada existe; false si no.
@@ -95,7 +103,7 @@ public class Deck {
 
     /**
      * Crea un set ordenado de las cartas existentes, ordenadas por tipo
-     * @return
+     * @return cardSet
      */
     public Set<String[]> setOrderedCards () {
         LinkedHashSet<String[]> cardSet = new LinkedHashSet<String[]>();
