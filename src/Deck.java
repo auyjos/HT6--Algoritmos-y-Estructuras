@@ -84,7 +84,7 @@ public class Deck {
             entry[1] = getType(card);
             entry[2] = String.valueOf(countCards(card));
             switch (entry[1]) {
-                case "Mostruo":
+                case "Monstruo":
                     deckSetTypeA.add(entry);
                     break;
                 case "Hechizo":
