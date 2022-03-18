@@ -1,5 +1,11 @@
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * 
@@ -19,6 +25,9 @@ public class Main{
 		  Scanner scan = new Scanner(System.in);
 		  FileReader rd= new FileReader();
 		  Deck deck = new Deck(rd.leerArchivo());
+		  boolean loop= true;
+		  int opcionUsuario = 0;
+		  while(opcionUsuario < 7 ) {
 	        // Display the menu
 	        System.out.println("1\t Agregar carta");
 	        System.out.println("2\t Mostrar tipo de carta específica");
@@ -26,42 +35,68 @@ public class Main{
 	        System.out.println("4\t Nombre, tipo y cantidad de cartas del usuario ordenada por tipo");
 	        System.out.println("5\t Nombre, tipo y cantidad de cartas existentes");
 	        System.out.println("6\t Nombre, tipo y cantidad de cartas existentes ordenadas por tipo");
+	        System.out.println("7\t Salir del programa");
 
 	        System.out.println("Escoja su opción:");
 	        
 	        //Get user's choice
-	        int opcion=scan.nextInt();
-	       
+	        opcionUsuario=scan.nextInt();
+	        
 	         
 	        //Display the title of the chosen module
-	        switch (opcion) {
+	        switch (opcionUsuario) {
 	            case 1: 
 	            	
-	                System.out.println("Usted escogió: Agregar carta ");
-	                String opcionCarta= scan.nextLine();
+	                System.out.println("\nUsted escogió: Agregar carta ");
+	                
+	                String opcionCarta= scan.next();
+	                System.out.println("\n"+opcionCarta);
 	                Boolean cartaAgregada =  deck.addCard(opcionCarta);
+	                
 	                if (cartaAgregada== true) {
-	                	System.out.println("La carta se ha agregado exitosamente");
+	                	System.out.println("\nLa carta se ha agregado exitosamente");
 	                }
 	                else {
-	                	System.out.println("Hubo un error al agregar la carta");
+	                	System.out.println("\nHubo un error al agregar la carta");
 	                }
 	                
 	        		 break;
 	            case 2: System.out.println("Usted escogió:  Mostrar tipo de carta específica");
-	            
+	            		String opcionCartaTipo= scan.next();
+	            		//Boolean opcionCartaTipoEleccion = deck.getType(opcionCartaTipo);
+	            		//deck.getType(opcionCartaTipo);
+	            		//if(opcionCartaTipo==false) {}
+	            			
+	            		
 	                    break;
 	            case 3: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas del usuario"); 
+	            		HashSet<String> hs = new HashSet<String>();
+	            		Set<String[]> deckUsuario= deck.setUserDeck(); 
+	            		Iterator itr= deckUsuario.iterator();
+	            		for (String[] s : deckUsuario) {
+	            		    System.out.println(Arrays.toString(s));
+	            		}
+	            		
+	            		
+	            		
 	                    break;
+	                    
 	            case 4: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas del usuario ordenada por tipo"); 
+	            		deck.setOrderedUserDeck();
+	            		
 	                     break;
+	                     
 	            case 5: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas existentes"); 
+	            rd.leerArchivo();
+	            //deck.countCards(lectura);
                 break;
                 
 	            case 6: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas existentes ordenadas por tipo"); 
+	            deck.setOrderedCards();
                 break;
                 
 	            default: System.out.println("Opción inválida");
 	        }
 	    }
 	}
+}

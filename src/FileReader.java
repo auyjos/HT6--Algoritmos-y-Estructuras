@@ -36,17 +36,18 @@ public class FileReader {
 				
 			    //process each line
 			    String line = scanner.nextLine();
-			    String [] carta = line.split("|"); 
-			  
+			    String [] carta = line.split("\\|"); 
+			    //System.out.println(line);
+			   // System.out.println(carta[1]);
 			    
-			    if (carta[1] == "Hechizo"){
-			    	hechizo.add(carta[0]);
+			    if (carta[1].trim().equalsIgnoreCase("Hechizo")){
+			    	hechizo.add(carta[0].trim());
 			    }
-			    if (carta[1]== "Monstruo") {
-			    	monstruo.add(carta[0]);
+			    if (carta[1].trim().equalsIgnoreCase("Monstruo")) {
+			    	monstruo.add(carta[0].trim());
 			    }
-			    if (carta[1]== "Trampa") {
-			    	trampa.add(carta[0]);
+			    if (carta[1].trim().equalsIgnoreCase("Trampa")) {
+			    	trampa.add(carta[0].trim());
 			    }
 			    
 			    

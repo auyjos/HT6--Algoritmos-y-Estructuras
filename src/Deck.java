@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,8 @@ import java.util.Set;
 public class Deck {
 
     private Map<String,List<String>> database;
-    private List<String> userDeck;
+    private List<String> userDeck= new ArrayList<String> ();
+  
 
     /**
      * Constructor que inicializa el deck con la base de datos
@@ -25,9 +27,15 @@ public class Deck {
      * @return true si la carta solicitada existe; false si no.
      */
     public boolean addCard (String cardname) {
+    	System.out.println(cardname);
+    	System.out.println(database.entrySet().toArray().length);
         for (Map.Entry<String, List<String>> cards : database.entrySet()) {
+        	System.out.println(cards.getValue());
             for (String card: cards.getValue()){
-                if (cardname == card) {
+            	System.out.println(card);
+            	System.out.println(cardname);
+
+                if (cardname.equalsIgnoreCase(card)) {
                     userDeck.add(card);
                     return true;
                 }
@@ -121,7 +129,7 @@ public class Deck {
      * @param card
      * @return counter
      */
-    private int countCards (String card){
+    public int countCards (String card){
         int counter = 0;
             for (String c : userDeck) {
                 if (c == card) {
