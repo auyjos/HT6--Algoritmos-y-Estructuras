@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 
 /**
- * @author José Auyón
+ * @author Josï¿½ Auyï¿½n
  *
  */
 public class FileReader {
@@ -23,7 +23,7 @@ public class FileReader {
 	 */
 	public Map<String,List<String>> leerArchivo() {
 		
-		//Creación variables
+		//Creaciï¿½n variables
 		Path path = Paths.get("cards_desc.txt");
 		Scanner scanner = null;
 		ArrayList <String >hechizo = new ArrayList<String>();
@@ -35,7 +35,7 @@ public class FileReader {
 			scanner = new Scanner(path);
 			while(scanner.hasNextLine()){
 				
-			    //procesa cada en línea
+			    //procesa cada en lï¿½nea
 			    String line = scanner.nextLine();
 			    String [] carta = line.split("\\|"); 
 			   
@@ -53,7 +53,7 @@ public class FileReader {
 			    
 			}
 			
-			//Añade a database
+			//Aï¿½ade a database
 			database.put("Hechizo",hechizo);
 			database.put("Trampa", trampa);
 			database.put("Monstruo", monstruo);
@@ -70,6 +70,36 @@ public class FileReader {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public ArrayList<String[]> getCards() {
+		
+		//Creaciï¿½n variables
+		Path path = Paths.get("cards_desc.txt");
+		Scanner scanner = null;
+		ArrayList<String[]> database = new ArrayList<String[]>();
+		
+		try {
+			scanner = new Scanner(path);
+			while(scanner.hasNextLine()){
+				
+			    //procesa cada en lï¿½nea
+			    String line = scanner.nextLine();
+			    String [] carta = line.split("\\|"); 
+			   
+			    database.add(carta);
+			}
+			
+			//Aï¿½ade a database
+			scanner.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return database;
+		// TODO Auto-generated constructor stub
+	}
 
 }

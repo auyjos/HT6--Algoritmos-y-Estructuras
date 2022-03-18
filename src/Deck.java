@@ -27,13 +27,9 @@ public class Deck {
      * @return true si la carta solicitada existe; false si no.
      */
     public boolean addCard (String cardname) {
-    	System.out.println(cardname);
-    	System.out.println(database.entrySet().toArray().length);
         for (Map.Entry<String, List<String>> cards : database.entrySet()) {
         	System.out.println(cards.getValue());
             for (String card: cards.getValue()){
-            	System.out.println(card);
-            	System.out.println(cardname);
 
                 if (cardname.equalsIgnoreCase(card)) {
                     userDeck.add(card);
@@ -65,7 +61,7 @@ public class Deck {
      * Crea un set ordenado de las cartas del usuario
      * @return deckSet
      */
-    public Set<String[]> setUserDeck () {
+    public Set<String[]> getUserDeck () {
         LinkedHashSet<String[]> deckSet = new LinkedHashSet<String[]>();
         for (String card: userDeck) {
             String [] entry = new String [3];
@@ -81,7 +77,7 @@ public class Deck {
      * Crea un set ordenado de las cartas del usuario, ordenadas por tipo
      * @return deckSet
      */
-    public Set<String[]> setOrderedUserDeck () {
+    public Set<String[]> getOrderedUserDeck () {
         LinkedHashSet<String[]> deckSet = new LinkedHashSet<String[]>();
         LinkedHashSet<String[]> deckSetTypeA = new LinkedHashSet<String[]>();
         LinkedHashSet<String[]> deckSetTypeB = new LinkedHashSet<String[]>();
@@ -113,7 +109,7 @@ public class Deck {
      * Crea un set ordenado de las cartas existentes, ordenadas por tipo
      * @return cardSet
      */
-    public Set<String[]> setOrderedCards () {
+    public Set<String[]> getOrderedCards () {
         LinkedHashSet<String[]> cardSet = new LinkedHashSet<String[]>();
         for (Map.Entry<String,List<String>> cards : database.entrySet()) {
             for (String card: cards.getValue()){
