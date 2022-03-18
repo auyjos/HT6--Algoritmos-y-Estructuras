@@ -62,11 +62,16 @@ public class Main{
 	                
 	        		 break;
 	            case 2: System.out.println("Usted escogió:  Mostrar tipo de carta específica");
-	            		String opcionCartaTipo= scan.next();
-	            		//Boolean opcionCartaTipoEleccion = deck.getType(opcionCartaTipo);
-	            		//deck.getType(opcionCartaTipo);
-	            		//if(opcionCartaTipo==false) {}
-	            			
+	            String opcionCartaEsp= scan.next();
+                System.out.println("\n"+opcionCartaEsp);
+                Boolean cartaEsp =  deck.addCard(opcionCartaEsp);
+                
+                if (cartaEsp== true) {
+                	System.out.println("\nLa carta se ha encontrado");
+                }
+                else {
+                	System.out.println("\n No se encontró la carta");
+                }
 	            		
 	                    break;
 	            case 3: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas del usuario"); 
@@ -87,12 +92,21 @@ public class Main{
 	                     break;
 	                     
 	            case 5: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas existentes"); 
-	            rd.leerArchivo();
-	            //deck.countCards(lectura);
+	            HashSet<String> hsGeneral = new HashSet<String>();
+        		Set<String[]> deckGeneral= deck.setOrderedCards();
+        		Iterator itrGeneral= deckGeneral.iterator();
+        		for (String[] s : deckGeneral) {
+        		    System.out.println(Arrays.toString(s));
+        		}
                 break;
                 
 	            case 6: System.out.println("Usted escogió: Nombre, tipo y cantidad de cartas existentes ordenadas por tipo"); 
-	            deck.setOrderedCards();
+	            HashSet<String> hsGeneralTipo = new HashSet<String>();
+        		Set<String[]> deckGeneralTipo= deck.setOrderedUserDeck();
+        		Iterator itrGeneralTipo= deckGeneralTipo.iterator();
+        		for (String[] s : deckGeneralTipo) {
+        		    System.out.println(Arrays.toString(s));
+        		}
                 break;
                 
 	            default: System.out.println("Opción inválida");

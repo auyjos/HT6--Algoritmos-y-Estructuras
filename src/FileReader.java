@@ -23,6 +23,7 @@ public class FileReader {
 	 */
 	public Map<String,List<String>> leerArchivo() {
 		
+		//Creación variables
 		Path path = Paths.get("cards_desc.txt");
 		Scanner scanner = null;
 		ArrayList <String >hechizo = new ArrayList<String>();
@@ -34,12 +35,11 @@ public class FileReader {
 			scanner = new Scanner(path);
 			while(scanner.hasNextLine()){
 				
-			    //process each line
+			    //procesa cada en línea
 			    String line = scanner.nextLine();
 			    String [] carta = line.split("\\|"); 
-			    //System.out.println(line);
-			   // System.out.println(carta[1]);
-			    
+			   
+			    // escoge el indice de la linea, borra los espacios y compara los strings para obtener tipo y carta
 			    if (carta[1].trim().equalsIgnoreCase("Hechizo")){
 			    	hechizo.add(carta[0].trim());
 			    }
@@ -53,6 +53,7 @@ public class FileReader {
 			    
 			}
 			
+			//Añade a database
 			database.put("Hechizo",hechizo);
 			database.put("Trampa", trampa);
 			database.put("Monstruo", monstruo);
@@ -62,7 +63,7 @@ public class FileReader {
 			e.printStackTrace();
 		}
 		
-		//read line by line
+		
 		
 		
 		return database;
